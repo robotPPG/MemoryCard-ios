@@ -9,10 +9,10 @@
 //MARK: Model
 import Foundation
 struct MemoryGame<CardContent> where CardContent: Equatable{
-    var cards:Array<Card>
+    private(set) var cards:Array<Card>
     
     //使用computed var实现
-    var indexOfTheOneAndOnlyFaceUpCard: Int?{ //可以在这里初始化为nil但是不这么做
+    private var indexOfTheOneAndOnlyFaceUpCard: Int?{ //可以在这里初始化为nil但是不这么做
         get{cards.indices.filter{cards[$0].isFaceUp}.only}
         set{
             for index in cards.indices{

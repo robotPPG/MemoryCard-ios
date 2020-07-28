@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct Grid<Item, ItemView>: View where Item :  Identifiable, ItemView: View{
-    var items: [Item]
-    var viewForItem: (Item) -> ItemView
+    private var items: [Item]
+    private var viewForItem: (Item) -> ItemView
     init(_ items: [Item], viewForItem: @escaping (Item) -> ItemView) {
         self.items = items
         self.viewForItem = viewForItem
@@ -25,13 +25,13 @@ struct Grid<Item, ItemView>: View where Item :  Identifiable, ItemView: View{
     
     
     //2.使用GridLayout将空间划分
-    func body(for layout: GridLayout) -> some View{
+    private func body(for layout: GridLayout) -> some View{
         ForEach(items){ item in
             self.body(for: item, in: layout)
         }
     }
 
-    func body(for item: Item, in layout: GridLayout) -> some View{
+    private func body(for item: Item, in layout: GridLayout) -> some View{
         let index = items.firstIndex(matching: item)! //optional的感叹号移到这里
         //因为永远不可能是nil，所以可以直接return
         return viewForItem(item)

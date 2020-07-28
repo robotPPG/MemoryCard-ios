@@ -22,7 +22,7 @@ class EmojiMemoryGame: ObservableObject{
     }
     
     //MARK: cards模型创建
-    static func createMemeoryGmae() -> MemoryGame<String>{
+    private static func createMemeoryGmae() -> MemoryGame<String>{
         let emojis=["👺","🎖","🤓","🤪","🚗","👻","💩"]
 //        let emojis=["🤓","🤪","🚗"]
         return MemoryGame<String>.init(numberOfPairsOfCards: emojis.count ){pairIndex in
